@@ -33,7 +33,7 @@ public abstract class AttachPopupView extends BasePopupView {
     }
 
     protected void addInnerContent() {
-        View contentView = LayoutInflater.from(getContext()).inflate(getImplLayoutId(), attachPopupContainer, false);
+        View contentView = LayoutInflater.from(getContext()).cloneInContext(getContext()).inflate(getImplLayoutId(), attachPopupContainer, false);
         attachPopupContainer.addView(contentView);
     }
 

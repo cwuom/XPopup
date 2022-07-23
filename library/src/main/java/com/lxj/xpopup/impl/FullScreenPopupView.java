@@ -37,7 +37,7 @@ public class FullScreenPopupView extends BasePopupView {
     }
 
     protected void addInnerContent(){
-        contentView = LayoutInflater.from(getContext()).inflate(getImplLayoutId(), fullPopupContainer, false);
+        contentView = LayoutInflater.from(getContext()).cloneInContext(getContext()).inflate(getImplLayoutId(), fullPopupContainer, false);
         fullPopupContainer.addView(contentView);
     }
     @Override

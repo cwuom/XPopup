@@ -73,7 +73,7 @@ public abstract class BasePopupView extends FrameLayout implements LifecycleObse
         lifecycleRegistry = new LifecycleRegistry(this);
         touchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
         setId(View.generateViewId());
-        View contentView = LayoutInflater.from(context).inflate(getInnerLayoutId(), this, false);
+        View contentView = LayoutInflater.from(context).cloneInContext(context).inflate(getInnerLayoutId(), this, false);
         // 事先隐藏，等测量完毕恢复，避免影子跳动现象。
         contentView.setAlpha(0);
         addView(contentView);

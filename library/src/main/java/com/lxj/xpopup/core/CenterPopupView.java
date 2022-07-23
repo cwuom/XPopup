@@ -29,7 +29,7 @@ public class CenterPopupView extends BasePopupView {
     }
 
     protected void addInnerContent(){
-        contentView = LayoutInflater.from(getContext()).inflate(getImplLayoutId(), centerPopupContainer, false);
+        contentView = LayoutInflater.from(getContext()).cloneInContext(getContext()).inflate(getImplLayoutId(), centerPopupContainer, false);
         LayoutParams params = (LayoutParams) contentView.getLayoutParams();
         params.gravity = Gravity.CENTER;
         centerPopupContainer.addView(contentView, params);

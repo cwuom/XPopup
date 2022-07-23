@@ -22,7 +22,7 @@ public class PositionPopupView extends BasePopupView {
     public PositionPopupView(@NonNull Context context) {
         super(context);
         positionPopupContainer = findViewById(R.id.positionPopupContainer);
-        View contentView = LayoutInflater.from(getContext()).inflate(getImplLayoutId(), positionPopupContainer, false);
+        View contentView = LayoutInflater.from(getContext()).cloneInContext(getContext()).inflate(getImplLayoutId(), positionPopupContainer, false);
         positionPopupContainer.addView(contentView);
     }
 

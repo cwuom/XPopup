@@ -27,7 +27,7 @@ public class BottomPopupView extends BasePopupView {
     }
 
     protected void addInnerContent(){
-        View contentView = LayoutInflater.from(getContext()).inflate(getImplLayoutId(), bottomPopupContainer, false);
+        View contentView = LayoutInflater.from(getContext()).cloneInContext(getContext()).inflate(getImplLayoutId(), bottomPopupContainer, false);
         bottomPopupContainer.addView(contentView);
     }
 

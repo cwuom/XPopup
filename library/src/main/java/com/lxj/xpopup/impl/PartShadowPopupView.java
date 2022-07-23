@@ -36,7 +36,7 @@ public abstract class PartShadowPopupView extends BasePopupView {
         return R.layout._xpopup_partshadow_popup_view;
     }
     protected void addInnerContent() {
-        View contentView = LayoutInflater.from(getContext()).inflate(getImplLayoutId(), attachPopupContainer, false);
+        View contentView = LayoutInflater.from(getContext()).cloneInContext(getContext()).inflate(getImplLayoutId(), attachPopupContainer, false);
         attachPopupContainer.addView(contentView);
     }
 

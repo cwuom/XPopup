@@ -30,7 +30,7 @@ public abstract class BubbleAttachPopupView extends BasePopupView {
     }
 
     protected void addInnerContent() {
-        View contentView = LayoutInflater.from(getContext()).inflate(getImplLayoutId(), bubbleContainer, false);
+        View contentView = LayoutInflater.from(getContext()).cloneInContext(getContext()).inflate(getImplLayoutId(), bubbleContainer, false);
         bubbleContainer.addView(contentView);
     }
 

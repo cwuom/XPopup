@@ -79,7 +79,7 @@ public class ImageViewerPopupView extends BasePopupView implements OnDragChangeL
         super(context);
         container = findViewById(R.id.container);
         if (getImplLayoutId() > 0) {
-            customView = LayoutInflater.from(getContext()).inflate(getImplLayoutId(), container, false);
+            customView = LayoutInflater.from(getContext()).cloneInContext(getContext()).inflate(getImplLayoutId(), container, false);
             customView.setVisibility(INVISIBLE);
             customView.setAlpha(0);
             container.addView(customView);

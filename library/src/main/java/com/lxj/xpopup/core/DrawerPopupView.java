@@ -36,7 +36,7 @@ public abstract class DrawerPopupView extends BasePopupView {
     }
 
     protected void addInnerContent(){
-        View contentView = LayoutInflater.from(getContext()).inflate(getImplLayoutId(), drawerContentContainer, false);
+        View contentView = LayoutInflater.from(getContext()).cloneInContext(getContext()).inflate(getImplLayoutId(), drawerContentContainer, false);
         drawerContentContainer.addView(contentView);
     }
 
