@@ -172,13 +172,9 @@ public abstract class BubbleAttachPopupView extends BasePopupView {
             //假设下方放不下，超出window高度
             boolean isTallerThanWindowHeight = (rect.bottom + getPopupContentView().getMeasuredHeight()) > maxY;
             centerY = (rect.top + rect.bottom) / 2f;
-            if (isTallerThanWindowHeight) {
-                //超出可用大小就显示在上方
-                isShowUp = true;
-//                isShowUp = centerY > XPopupUtils.getScreenHeight(getContext()) / 2;
-            } else {
-                isShowUp = false;
-            }
+            //超出可用大小就显示在上方
+            //                isShowUp = centerY > XPopupUtils.getScreenHeight(getContext()) / 2;
+            isShowUp = isTallerThanWindowHeight;
             isShowLeft = centerX < XPopupUtils.getAppWidth(getContext()) / 2;
 
             //修正高度，弹窗的高有可能超出window区域

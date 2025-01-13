@@ -54,7 +54,7 @@ public class ShadowBgAnimator extends PopupAnimator {
     }
 
     public void applyColorValue(float val){
-        targetView.setBackgroundColor((Integer) calculateBgColor(val));
+        targetView.setBackgroundColor(calculateBgColor(val));
     }
 
     public int calculateBgColor(float fraction){

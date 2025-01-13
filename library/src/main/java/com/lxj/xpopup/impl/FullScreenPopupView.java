@@ -48,7 +48,7 @@ public class FullScreenPopupView extends BasePopupView {
         getPopupContentView().setTranslationY(popupInfo.offsetY);
     }
 
-    private Paint paint = new Paint();
+    private final Paint paint = new Paint();
     protected Rect shadowRect;
     int currColor = Color.TRANSPARENT;
     @Override

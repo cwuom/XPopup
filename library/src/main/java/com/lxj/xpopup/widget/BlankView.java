@@ -27,7 +27,7 @@ public class BlankView extends View {
         init();
     }
 
-    private Paint paint = new Paint();
+    private final Paint paint = new Paint();
     private RectF rect = null;
     public int radius = 0;
     public int color = Color.WHITE;

@@ -29,8 +29,8 @@ import static android.graphics.Canvas.ALL_SAVE_FLAG;
  */
 
 public class BubbleLayout extends FrameLayout {
-    private Paint mPaint;
-    private Path mPath;
+    private final Paint mPaint;
+    private final Path mPath;
     private Look mLook;
     private int mBubblePadding;
     private int mWidth, mHeight;
@@ -53,17 +53,17 @@ public class BubbleLayout extends FrameLayout {
     // 气泡背景图
     private Bitmap mBubbleImageBg = null;
     // 气泡背景显示区域
-    private RectF mBubbleImageBgDstRectF = new RectF();
-    private Rect mBubbleImageBgSrcRect = new Rect();
-    private Paint mBubbleImageBgPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
-    private Paint mBubbleImageBgBeforePaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
+    private final RectF mBubbleImageBgDstRectF = new RectF();
+    private final Rect mBubbleImageBgSrcRect = new Rect();
+    private final Paint mBubbleImageBgPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
+    private final Paint mBubbleImageBgBeforePaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
 
     // 气泡边框颜色
     private int mBubbleBorderColor = Color.BLACK;
     // 气泡边框大小
     private int mBubbleBorderSize = 0;
     // 气泡边框画笔
-    private Paint mBubbleBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
+    private final Paint mBubbleBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
     public int arrowOffset = 0;
     /**
      * 箭头指向
@@ -625,8 +625,7 @@ public class BubbleLayout extends FrameLayout {
     //    private int mWidth, mHeight;
 //    private int mLeft, mTop, mRight, mBottom;
     public void onRestoreInstanceState(Parcelable state) {
-        if (state instanceof Bundle) {
-            Bundle bundle = (Bundle) state;
+        if (state instanceof Bundle bundle) {
             this.mLookPosition = bundle.getInt("mLookPosition");
             this.mLookWidth = bundle.getInt("mLookWidth");
             this.mLookLength = bundle.getInt("mLookLength");

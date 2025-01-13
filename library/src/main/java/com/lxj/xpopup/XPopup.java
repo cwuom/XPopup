@@ -159,7 +159,7 @@ public class XPopup {
 
     public static class Builder {
         private final PopupInfo popupInfo = new PopupInfo();
-        private Context context;
+        private final Context context;
 
         public Builder(Context context) {
             this.context = context;

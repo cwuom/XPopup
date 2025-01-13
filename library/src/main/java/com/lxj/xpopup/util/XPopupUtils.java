@@ -449,7 +449,7 @@ public class XPopupUtils {
         OutputStream os = null;
         try {
             os = new BufferedOutputStream(fos);
-            byte data[] = new byte[8192];
+            byte[] data = new byte[8192];
             int len;
             while ((len = is.read(data, 0, 8192)) != -1) {
                 os.write(data, 0, len);

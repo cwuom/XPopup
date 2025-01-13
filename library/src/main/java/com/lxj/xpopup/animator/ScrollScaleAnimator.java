@@ -12,10 +12,10 @@ import com.lxj.xpopup.enums.PopupAnimation;
  */
 public class ScrollScaleAnimator extends PopupAnimator{
 
-    private IntEvaluator intEvaluator = new IntEvaluator();
+    private final IntEvaluator intEvaluator = new IntEvaluator();
     private int startScrollX, startScrollY;
-    private float startAlpha = 0f;
-    private float startScale = 0f;
+    private final float startAlpha = 0f;
+    private final float startScale = 0f;
 
     public ScrollScaleAnimator(View target, int animationDuration, PopupAnimation popupAnimation) {
         super(target, animationDuration, popupAnimation);

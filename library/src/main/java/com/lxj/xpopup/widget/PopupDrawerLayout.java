@@ -139,21 +139,18 @@ public class PopupDrawerLayout extends FrameLayout {
             boolean inRect = XPopupUtils.isInRect(x, y, rect);
             if (inRect) {
                 if(child instanceof ViewGroup){
-                    if (child instanceof ViewPager) {
-                        ViewPager pager = (ViewPager) child;
+                    if (child instanceof ViewPager pager) {
                         if (direction == 0) {
                             boolean b =pager.canScrollHorizontally(-1) || pager.canScrollHorizontally(1);
                             return pager.canScrollHorizontally(-1) || pager.canScrollHorizontally(1);
                         }
                         return pager.canScrollHorizontally(direction);
-                    } else if (child instanceof HorizontalScrollView) {
-                        HorizontalScrollView hsv = (HorizontalScrollView) child;
+                    } else if (child instanceof HorizontalScrollView hsv) {
                         if (direction == 0) {
                             return hsv.canScrollHorizontally(-1) || hsv.canScrollHorizontally(1);
                         }
                         return hsv.canScrollHorizontally(direction);
-                    } else if (child instanceof ViewPager2) {
-                        ViewPager2 pager2 = (ViewPager2) child;
+                    } else if (child instanceof ViewPager2 pager2) {
                         RecyclerView rv = (RecyclerView) pager2.getChildAt(0);
                         return rv.canScrollHorizontally(-1) || rv.canScrollHorizontally(1);
                     } else {

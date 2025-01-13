@@ -41,10 +41,10 @@ import android.widget.OverScroller;
 public class PhotoViewAttacher implements View.OnTouchListener,
         View.OnLayoutChangeListener {
 
-    private static float DEFAULT_MAX_SCALE = 4.0f;
-    private static float DEFAULT_MID_SCALE = 2.5f;
-    private static float DEFAULT_MIN_SCALE = 1.0f;
-    private static int DEFAULT_ZOOM_DURATION = 200;
+    private static final float DEFAULT_MAX_SCALE = 4.0f;
+    private static final float DEFAULT_MID_SCALE = 2.5f;
+    private static final float DEFAULT_MIN_SCALE = 1.0f;
+    private static final int DEFAULT_ZOOM_DURATION = 200;
 
     private static final int HORIZONTAL_EDGE_NONE = -1;
     private static final int HORIZONTAL_EDGE_LEFT = 0;
@@ -54,7 +54,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
     private static final int VERTICAL_EDGE_TOP = 0;
     private static final int VERTICAL_EDGE_BOTTOM = 1;
     private static final int VERTICAL_EDGE_BOTH = 2;
-    private static int SINGLE_TOUCH = 1;
+    private static final int SINGLE_TOUCH = 1;
 
     private Interpolator mInterpolator = new AccelerateDecelerateInterpolator();
     private int mZoomDuration = DEFAULT_ZOOM_DURATION;
@@ -65,7 +65,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
     private boolean mAllowParentInterceptOnEdge = true;
     private boolean mBlockParentIntercept = false;
 
-    private ImageView mImageView;
+    private final ImageView mImageView;
 
     // Gesture Detectors
     private GestureDetector mGestureDetector;
@@ -98,7 +98,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
     private boolean mZoomEnabled = true;
     private boolean isLongImage = false;//是否是长图
     private ScaleType mScaleType = ScaleType.FIT_CENTER;
-    private OnGestureListener onGestureListener = new OnGestureListener() {
+    private final OnGestureListener onGestureListener = new OnGestureListener() {
         @Override
         public void onDrag(float dx, float dy) {
             if (mScaleDragDetector.isScaling()) {
@@ -140,12 +140,8 @@ public class PhotoViewAttacher implements View.OnTouchListener,
                 if (mHorizontalScrollEdge == HORIZONTAL_EDGE_BOTH && isLongImage && isHorizontal) {
                     //长图左右滑动
                     parent.requestDisallowInterceptTouchEvent(false);
-                }else if((mHorizontalScrollEdge == HORIZONTAL_EDGE_RIGHT ||
-                        mHorizontalScrollEdge == HORIZONTAL_EDGE_LEFT) && !isLongImage && !isHorizontal){
-                    parent.requestDisallowInterceptTouchEvent(false);
-                }else {
-                    parent.requestDisallowInterceptTouchEvent(true);
-                }
+                }else parent.requestDisallowInterceptTouchEvent((mHorizontalScrollEdge != HORIZONTAL_EDGE_RIGHT &&
+                        mHorizontalScrollEdge != HORIZONTAL_EDGE_LEFT) || isLongImage || isHorizontal);
             }
         }
 
@@ -659,7 +655,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
             switch (mScaleType) {
                 case FIT_CENTER:
                     // for long image, 图片高>view高，比例也大于view的高/宽，则认为是长图
-                    if (/*drawableHeight > viewHeight &&*/ drawableHeight * 1f / drawableWidth > viewHeight * 1f / viewWidth) {
+                    if (/*drawableHeight > viewHeight &&*/ drawableHeight * 1f / drawableWidth > viewHeight / viewWidth) {
 //                        mBaseMatrix.postScale(widthScale, widthScale);
 //                        setScale(widthScale);
                         //长图特殊处理，宽度撑满屏幕，并且顶部对齐

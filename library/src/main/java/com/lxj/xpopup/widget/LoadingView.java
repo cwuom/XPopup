@@ -14,14 +14,14 @@ import com.lxj.xpopup.util.XPopupUtils;
  * Create by dance, at 2018/12/18
  */
 public class LoadingView extends View {
-    private Paint paint;
+    private final Paint paint;
     private float radius;
     private float radiusOffset;
     // 不是固定不变的，当width为30dp时，它为2dp，当宽度变大，这个也会相应的变大
     private float stokeWidth = 2f;
-    private ArgbEvaluator argbEvaluator = new ArgbEvaluator();
-    private int startColor = Color.parseColor("#EEEEEE");
-    private int endColor = Color.parseColor("#111111");
+    private final ArgbEvaluator argbEvaluator = new ArgbEvaluator();
+    private final int startColor = Color.parseColor("#EEEEEE");
+    private final int endColor = Color.parseColor("#111111");
     int lineCount = 10; // 线的数量
     float avgAngle = 360f / lineCount;
     int time = 0; // 重复次数
@@ -85,7 +85,7 @@ public class LoadingView extends View {
         postDelayed(increaseTask, 80);
     }
 
-    private Runnable increaseTask = new Runnable() {
+    private final Runnable increaseTask = new Runnable() {
         @Override
         public void run() {
             time++;
